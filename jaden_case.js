@@ -21,7 +21,9 @@
 function solution(s) {
   var answer = "";
   //   let a = s.toString().split(" ");
+  //문자 변환후 소문자로
   let c = s.toString().toLowerCase();
+  //정규식으로 처리
   let a = c.toString().replace(/\b[a-z]/g, (char) => char.toUpperCase());
 
   console.log(c);
