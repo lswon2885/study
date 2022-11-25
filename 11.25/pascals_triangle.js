@@ -24,7 +24,7 @@ var addRow  = function(triangle){
         let next = previous[i+1]
         newRow.push(current + next)
     }
-    console.log(newRow+"처음")
+    console.log(newRow)
     newRow.push(1)
     console.log(newRow)
     return triangle.push(newRow)
