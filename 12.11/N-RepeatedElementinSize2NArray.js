@@ -24,4 +24,4 @@ var repeatedNTimes = function(nums) {
     //         } c=count;
     //     }count =0;
     // }console.log(c)
-};repeatedNTimes([1,2,3,3,4,4,4]);
+};repeatedNTimes([4,1,2,3,3,4,4,4]);
