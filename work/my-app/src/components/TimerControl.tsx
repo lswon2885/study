@@ -1,4 +1,5 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import {useBoolean} from 'usehooks-ts';
 function Timer() {
 	useEffect(() => {
 		const savedTitle = document.title;
@@ -16,13 +17,11 @@ function Timer() {
 }
 
 export default function TimerControl() {
-	const [playing, setPlaying] = useState(false);
+	const {value: playing, toggle: togglePlaying} = useBoolean();
+	// const [playing, setPlaying] = useState(false);
 	const [count, setCount] = useState(0);
-	useEffect(() => {
-		console.log(count);
-	}, [playing]);
 	const handleClick = () => {
-		setPlaying(!playing);
+		togglePlaying();
 	};
 
 	return (

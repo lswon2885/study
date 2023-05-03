@@ -1,4 +1,5 @@
 import type React from 'react';
+import {useRef} from 'react';
 
 type TextFiledProps = {
 	filterText: string;
@@ -11,6 +12,7 @@ export default function TextField({
 	placeholder,
 	setFilterText,
 }: TextFiledProps) {
+	const id = useRef(`input-${Math.random()}`);
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const {value} = event.target;
 		setFilterText(value);
@@ -18,7 +20,11 @@ export default function TextField({
 
 	return (
 		<div>
+			<label htmlFor={id.current}>
+				Search
+			</label>
 			<input type={'text'}
+				id={id.current}
 				placeholder={placeholder}
 				value={filterText}
 				onChange={handleChange}

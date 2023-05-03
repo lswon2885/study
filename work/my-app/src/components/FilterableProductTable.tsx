@@ -7,18 +7,30 @@ import TimerControl from './TimerControl';
 type FilterableProductTableProps = {
 	products: Product[];
 };
-export default function FilterableProductTable({
-	products,
-}: FilterableProductTableProps) {
-	// InStockOnly가 있어야 하는곳
-	// filterText가 있어야 하는곳
-
+function useProductsFilter(products: Product[]) {
 	const [filterText, setFilterText] = useState<string>('');
 	const [inStockedOnly, setInStockedOnly] = useState<boolean>(false);
 	const filteredProducts = filterProducts(products, {
 		filterText,
 		inStockedOnly,
 	});
+	return {
+		filterText, setFilterText, inStockedOnly, setInStockedOnly, filteredProducts,
+
+	};
+}
+
+export default function FilterableProductTable({
+	products,
+}: FilterableProductTableProps) {
+	const {
+		filterText, setFilterText,
+		inStockedOnly, setInStockedOnly,
+		filteredProducts,
+	} = useProductsFilter(products);
+	// InStockOnly가 있어야 하는곳
+	// filterText가 있어야 하는곳
+
 	return (
 		<div className='filterable-products-table'>
 			<SearcBar

@@ -1,21 +1,11 @@
 
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import FilterableProductTable from './components/FilterableProductTable';
 import TimerControl from './components/TimerControl';
-import type Product from './types/Product';
+import useFetchProducts from './hooks/useFetchProducts';
 
 export default function App() {
-	const [products, setProducts] = useState<Product[]>([]);
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const url = 'http://localhost:3000/products';
-			const response = await fetch(url);
-			const data = await response.json();
-			setProducts(data.products);
-		};
-
-		fetchProducts();
-	}, []);
+	const products = useFetchProducts();
 	return (
 		<div>
 			<TimerControl/>
