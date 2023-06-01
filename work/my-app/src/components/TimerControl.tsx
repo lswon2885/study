@@ -18,7 +18,7 @@ function Timer() {
 
 export default function TimerControl() {
 	const {value: playing, toggle: togglePlaying} = useBoolean();
-	// const [playing, setPlaying] = useState(false);
+	// Const [playing, setPlaying] = useState(false);
 	const [count, setCount] = useState(0);
 	const handleClick = () => {
 		togglePlaying();
